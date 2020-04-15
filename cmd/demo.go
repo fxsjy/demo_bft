@@ -12,10 +12,10 @@ func main() {
 	for _, node := range network {
 		node.SetNeighbours(network)
 	}
-	nodeA := network[0]
 	for i := 0; i < 1000; i++ {
+		miner := network[i%4]
 		blkid := fmt.Sprintf("block_%d", i)
-		nodeA.ProposeBlock(&node.Block{Blockid: blkid, Height: i})
+		miner.ProposeBlock(&node.Block{Blockid: blkid, Height: i})
 		time.Sleep(blockSpan)
 	}
 	//nodeA.ProposeBlock(&node.Block{Blockid:"foo", Height: 1})
